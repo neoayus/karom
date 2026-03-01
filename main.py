@@ -20,7 +20,10 @@ app.add_middleware(
 
 # Directories 
 UPLOAD_DIR = "uploads"
+OUTPUT_DIR = "outputs"
+
 os.makedirs(UPLOAD_DIR, exist_ok=True)
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 @app.post("/upload")
 async def upload(file: UploadFile = File(...)):
@@ -44,7 +47,7 @@ async def upload(file: UploadFile = File(...)):
 @app.get("/download/{filename}")
 async def download_file(filename: str):
   # Build the full path of the converted file
-  file_path = os.path.join(UPLOAD_DIR, filename)
+  file_path = os.path.join(OUTPUT_DIR, filename)
   
   # Check if file already exists
   if not os.path.exists(file_path): 
@@ -52,7 +55,7 @@ async def download_file(filename: str):
   
   # Return file content 
   return FileResponse(
-    path=file_path
+    path=file_path,
     filename=os.path.basename(file_path),
     media_type="text/plain"
   )
