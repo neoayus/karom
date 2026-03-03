@@ -12,9 +12,8 @@ It is designed to support language learners who want readable Japanese subtitles
 
 The backend is deployed and accessible at:
 
-```
 [YOMIBASHI@RENDER](https://yomibashi.onrender.com/)
-```
+
 ---
 
 ## Purpose
